@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: nanover-recording-converter
+Version: 0.0.0
+Summary: Convert NanoVer .traj/.state recordings to newer .nanover.zip recordings
+Author: Intangible Realities Lab
+Requires-Python: >=3.11
+Requires-Dist: openmm
+Requires-Dist: MDAnalysis
+Requires-Dist: numpy
+Requires-Dist: grpcio>=1.63.0
+Requires-Dist: grpcio-tools>=1.63.0
+Requires-Dist: aiogrpc
+Requires-Dist: msgpack>=1.0.0

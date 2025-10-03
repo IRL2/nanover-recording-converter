@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: nanover-server
+Version: 0.0.0
+Summary: Python servers for NanoVer.
+Author: Intangible Realities Lab
+Requires-Python: >=3.11
+Requires-Dist: openmm
+Requires-Dist: MDAnalysis
+Requires-Dist: numpy
+Requires-Dist: nglview
+Requires-Dist: netifaces
+Requires-Dist: grpcio>=1.63.0
+Requires-Dist: grpcio-tools>=1.63.0
+Requires-Dist: pytest
+Requires-Dist: aiogrpc
+Requires-Dist: numpy
+Requires-Dist: hypothesis
+Requires-Dist: ase>=3.21
+Requires-Dist: setuptools>=40.1.1
+Requires-Dist: websockets>=15.0.0
+Requires-Dist: msgpack>=1.0.0

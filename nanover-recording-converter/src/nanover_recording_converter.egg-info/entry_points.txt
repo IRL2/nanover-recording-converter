@@ -1,0 +1,2 @@
+[console_scripts]
+nanover-convert-recording = nanover.grpc.convert_cli:main
