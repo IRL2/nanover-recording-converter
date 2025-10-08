@@ -9,5 +9,5 @@ python ./compile_proto.py --proto-dir=./protocol --python-dir=./nanover-recordin
 
 ## Usage
 ```
-nanover-recording-convert recording.traj recording.state
+nanover-convert-recording recording.traj recording.state
 ```
