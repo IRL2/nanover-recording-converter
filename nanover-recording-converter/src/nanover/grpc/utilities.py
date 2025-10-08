@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from os import PathLike
 from typing import Any
 
-from nanover.state.state_dictionary import StateDictionary
+from nanover.utilities.state_dictionary import StateDictionary
 from nanover.trajectory import FrameData
 
 from nanover.trajectory.convert import (
