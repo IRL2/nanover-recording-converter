@@ -3,14 +3,14 @@ from dataclasses import dataclass
 from os import PathLike
 from typing import Any
 
+from nanover.utilities.packing import PackingPair
 from nanover.utilities.state_dictionary import StateDictionary
 from nanover.trajectory import FrameData
 
-from nanover.trajectory.convert import (
-    unpack_dict_frame,
+from nanover.trajectory.frame_dict import (
+    FRAME_PACKERS,
     pack_identity,
-    pack_force_list,
-    converters,
+    frame_dict_packer,
 )
 from nanover.utilities.change_buffers import DictionaryChange
 
@@ -25,8 +25,11 @@ from .frame_data import FrameData as FrameDataOld
 from .protobuf_utilities import struct_to_dict
 
 
+pack_force_list = PackingPair(pack=list, unpack=list)
+
+
 def convert_grpc_frame_to_dict_frame(grpc_frame) -> dict[str, Any]:
-    return unpack_dict_frame(pack_grpc_frame(grpc_frame))
+    return frame_dict_packer.unpack(pack_grpc_frame(grpc_frame))
 
 
 def convert_GetFrameResponse_to_framedata(response: GetFrameResponse) -> FrameData:
@@ -39,11 +42,11 @@ def pack_grpc_frame(frame: FrameDataOld) -> dict[str, Any]:
     data = {}
 
     for key in frame.value_keys:
-        converter = converters.get(key, pack_identity)
+        converter = FRAME_PACKERS.get(key, pack_identity)
         data[key] = converter.pack(frame.values[key])
 
     for key in frame.array_keys:
-        converter = converters.get(key, pack_force_list)
+        converter = FRAME_PACKERS.get(key, pack_force_list)
         data[key] = converter.pack(frame.arrays[key])
 
     return data
